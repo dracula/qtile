@@ -5,7 +5,7 @@ from libqtile import bar, hook
 from libqtile.config import Screen
 
 # Config files and other libraries
-from cfg.bindings import init_app_run, init_keys
+from cfg.bindings import init_apps_run, init_keys, init_groups_keys
 from cfg.groups import init_group_mappings, init_groups
 from cfg.layouts import init_layouts
 from cfg.widgets import init_widgets
@@ -30,11 +30,13 @@ def init_bar():
 
 # Set the Vars objects
 keys = init_keys()
-apps = init_app_run()
+apps = init_apps_run()
 keys.extend(apps)
 widgets = init_widgets()
 layouts = init_layouts()
 groups = init_groups()
+groups_bind = init_groups_keys()
+keys.extend(groups_bind)
 group_mappings = init_group_mappings()
 
 # Set your default widget styles
