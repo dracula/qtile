@@ -1,10 +1,13 @@
 from libqtile import layout
 
+
 # Define layouts
-def init_layouts():
+def init_layouts(layoutConfing:dict):
+
     layouts = [
-        layout.MonadTall(),
-        layout.MonadWide(),
-        layout.Matrix(),
+        layout.Bsp(**layoutConfing),
+        layout.MonadTall(**layoutConfing),
+        layout.MonadWide(**layoutConfing),
+        layout.Matrix(**layoutConfing),
     ]
     return layouts
