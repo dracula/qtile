@@ -1,22 +1,22 @@
 from libqtile.config import Group
 
+
 # Define groups
 def init_groups():
     group_names = [
-        ("", {"layout": "bsp"}),
-        ("", {"layout": "bsp"}),
-        ("｡♪", {"layout": "bsp"}),
-        ("", {"layout": "bsp"}),
-        ("", {"layout": "bsp"}),
-        ("", {"layout": "bsp"}),
+        (" ", {"layout": "Bsp"}),
+        (" ", {"layout": "Bsp"}),
+        ("♬ ", {"layout": "Bsp"}),
+        (" ", {"layout": "Bsp"}),
+        (" ", {"layout": "Bsp"}),
+        (" ", {"layout": "Bsp"}),
     ]
     return group_names
- 
 
 
 # Making objects from each group member
 def Groups_name_creator():
-    return  [Group(name, **kwargs) for name, kwargs in init_groups()]
+    return [Group(name, **kwargs) for name, kwargs in init_groups()]
 
 
 # Assign apps to specific groups
