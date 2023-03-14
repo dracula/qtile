@@ -1,8 +1,19 @@
 from libqtile import widget
 
-
 def init_widgets(config: dict):
     widgets = [
+        widget.CurrentLayout(
+            foreground=config["foreground"],
+            font=config["font"],
+            fontsize=16,
+            markup=True,
+        ),
+        widget.CurrentLayoutIcon(
+            background=config["background"],
+            foreground=config["foreground"],
+            scale=0.76,
+        ),
+        widget.Sep(padding=20),
         widget.GroupBox(
             font=config["font"],
             fontsize=config["fontsize"],
@@ -19,15 +30,16 @@ def init_widgets(config: dict):
             foreground=config["foreground"],
             background=config["background"],
         ),
-        widget.Prompt(
-            font=config["font"],
-            fontsize=config["fontsize"],
-            foreground=config["foreground"],
-            background=config["background"],
-            padding=5,
-            prompt="Run: ",
-            cursor_color=config["comment"],
-        ),
+        #       widget.Prompt(
+        #           font=config["font"],
+        #           fontsize=config["fontsize"],
+        #           foreground=config["foreground"],
+        #           background=config["background"],
+        #           padding=5,
+        #           prompt="Run: ",
+        #           cursor_color=config["comment"],
+        #       ),
+        widget.Sep(padding=20),
         widget.WindowName(
             foreground=config["foreground"],
             background=config["background"],
@@ -35,10 +47,8 @@ def init_widgets(config: dict):
             fontsize=config["fontsize"],
             padding=5,
         ),
-        widget.Wlan(
-            interface="wlan0",
-            format="[{ssid}] {quality:03.0f}%",
-        ),
+        widget.Sep(padding=20),
+        widget.Net(),
         widget.Systray(
             background=config["background"],
             padding=5,
