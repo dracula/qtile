@@ -37,6 +37,8 @@ def init_keys():
         Key([super, "shift"], "n", lazy.layout.normalize()),
         # Switch window Mode to FullScreen
         Key([super, "Shift"], "f", lazy.window.toggle_fullscreen()),
+        # Switch between tiling mode and floating mode
+        Key([super, "Shift"], "t", lazy.window.toggle_floating()),
         # resize fcuse window
         Key([super, "control"], "g", lazy.layout.grow()),
         Key([super, "control"], "s", lazy.layout.shrink()),
