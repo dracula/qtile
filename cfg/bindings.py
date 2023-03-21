@@ -20,8 +20,8 @@ def init_keys():
         Key([super], "l", lazy.layout.right()),
         # Move windows posation in current stack
         Key([super, "Shift"], "h", lazy.layout.shuffle_left()),
-        Key([super, "shift"], "k", lazy.layout.shuffle_down()),
-        Key([super, "shift"], "j", lazy.layout.shuffle_up()),
+        Key([super, "Shift"], "k", lazy.layout.shuffle_down()),
+        Key([super, "Shift"], "j", lazy.layout.shuffle_up()),
         Key([super, "Shift"], "l", lazy.layout.shuffle_right()),
         # Flib windows tile desing
         Key([super, alt], "j", lazy.layout.flip_down()),
@@ -34,7 +34,7 @@ def init_keys():
         # Swap panes of split stack
         Key([super, "Shift"], "space", lazy.layout.rotate()),
         # Switch Window Mode to Normalize
-        Key([super, "shift"], "n", lazy.layout.normalize()),
+        Key([super, "Shift"], "n", lazy.layout.normalize()),
         # Switch window Mode to FullScreen
         Key([super, "Shift"], "f", lazy.window.toggle_fullscreen()),
         # Switch between tiling mode and floating mode
@@ -48,6 +48,8 @@ def init_keys():
         Key([super, "control"], "l", lazy.layout.grow_right()),
         # Toggle between different layouts as defined below
         Key([super], "space", lazy.next_layout()),
+        # Switch KeyBoard language
+        # Key([super], "space", lazy.widget["keyboardlayout"].next_keyboard()),
         # Kill focused window
         Key([super], "w", lazy.window.kill()),
         # Restart Qtile
@@ -59,7 +61,7 @@ def init_keys():
 
 
 def init_apps_run():
-    term = "kitty"
+    term = "alacritty"
     browser = "firefox"
 
     keys = [
