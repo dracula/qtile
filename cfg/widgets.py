@@ -1,5 +1,6 @@
 from libqtile import widget
 
+
 def init_widgets(config: dict):
     widgets = [
         widget.CurrentLayout(
@@ -47,12 +48,21 @@ def init_widgets(config: dict):
             fontsize=config["fontsize"],
             padding=5,
         ),
+        widget.KeyboardLayout(
+            font=config["font"], configured_keyboards=["us", "ir"], fmt="Keyboard: {}"
+        ),
         widget.Sep(padding=20),
         widget.Net(),
         widget.Systray(
             background=config["background"],
             padding=5,
             icon_size=config["fontsize"],
+        ),
+        widget.PulseVolume(
+            background=config["background"],
+            foreground=config["foreground"],
+            font=config["font"],
+            emoji=True,
         ),
         widget.Clock(
             format=" %I:%M%p",
