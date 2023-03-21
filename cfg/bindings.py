@@ -49,7 +49,7 @@ def init_keys():
         # Toggle between different layouts as defined below
         Key([super], "space", lazy.next_layout()),
         # Switch KeyBoard language
-        # Key([super], "space", lazy.widget["keyboardlayout"].next_keyboard()),
+        Key([alt], "Shift_L", lazy.widget["keyboardlayout"].next_keyboard()),
         # Kill focused window
         Key([super], "w", lazy.window.kill()),
         # Restart Qtile
