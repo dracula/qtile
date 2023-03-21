@@ -4,12 +4,12 @@ from libqtile.config import Group
 # Define groups
 def init_groups():
     group_names = [
-        (" ", {"layout": "Bsp"}),
-        (" ", {"layout": "Bsp"}),
-        ("♬ ", {"layout": "Bsp"}),
-        (" ", {"layout": "Bsp"}),
-        (" ", {"layout": "Bsp"}),
-        (" ", {"layout": "Bsp"}),
+        ("Web", {"layout": "Bsp"}),
+        ("Code", {"layout": "Bsp"}),
+        ("Music", {"layout": "Bsp"}),
+        ("Game", {"layout": "Bsp"}),
+        ("Files", {"layout": "Bsp"}),
+        ("Others", {"layout": "Bsp"}),
     ]
     return group_names
 
