@@ -18,6 +18,7 @@ from colors.dracula import Dracula
 # Set up the hooks
 @hook.subscribe.startup_once
 def autostart():
+    subprocess.Popen("dunst")
     if qtile.core.name == "x11":
         subprocess.Popen(["picom", "-b"])
     subprocess.Popen("lxqt-policykit-agent")
