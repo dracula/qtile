@@ -1,4 +1,5 @@
 # python libraries
+import os
 import subprocess
 
 #  qtile built-in libraries
@@ -19,19 +20,20 @@ from colors.dracula import Dracula
 def autostart():
     if qtile.core.name == "x11":
         subprocess.Popen(["picom", "-b"])
+    subprocess.Popen("lxqt-policykit-agent")
     subprocess.Popen("nm-applet")
+    os.environ["QT_QPA_PLATFORMTHEME"] = "qt5ct"
 
 
 # Set your default widget styles
 colors = Dracula()
-widget_themes = dict(
-    font="Fira Code Nerd Font",
-    fontsize=14,
-    fontshadow=None,
+widgets_themes = dict(
+    font="FantasqueSansMono Nerd Font Mono",
+    fontsize=18,
 )
 
-# Merge the theme dictionary with the widget_defaults dictionary
-widget_themes.update(colors)
+# Merge the theme dictionary with the widgets_themes dictionary
+widgets_themes.update(colors)
 
 layoutConfig = dict(
     margin=[10, 5, 5, 10],
@@ -55,10 +57,10 @@ group_mappings = init_group_mappings()
 # Define the bar
 def init_bar():
     return bar.Bar(
-        init_widgets(widget_themes),
+        init_widgets(widgets_themes),
         24,
         opacity=0.66,
-        background=widget_themes["background"],
+        background=colors["background"],
         floating=True,  # allow the bar to have a shadow effect
         border_width=0,  # remove the default border
         margin=[0, 5, 5, 10],  # add some margin for the shadow effect
