@@ -5,9 +5,10 @@ from libqtile.lazy import lazy
 # config files
 from .groups import init_groups
 
-# Set the super key
+# Set the varible key
 super = "mod4"
 alt = "mod1"
+print_screen = "Print"
 
 
 # Define keybindings
@@ -62,12 +63,19 @@ def init_keys():
 
 def init_apps_run():
     term = "alacritty"
+    app_menu = "dmenu_run"
     browser = "firefox"
+    file_manager = "pcmanfm-qt"
+    qt5_config = "qt5ct"
+    screenshot = "lximage-qt -s"
 
     keys = [
         Key([super], "Return", lazy.spawn(term)),
         Key([super], "b", lazy.spawn(browser)),
-        Key([super], "d", lazy.spawn("dmenu_run")),
+        Key([super], "d", lazy.spawn(app_menu)),
+        Key([super], "e", lazy.spawn(file_manager)),
+        Key([super], "q", lazy.spawn(qt5_config)),
+        Key([print_screen], lazy.spawn(f"{screenshot} /home/ali/Pictures/")),
     ]
 
     return keys
