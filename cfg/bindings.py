@@ -75,7 +75,7 @@ def init_apps_run():
         Key([super], "d", lazy.spawn(app_menu)),
         Key([super], "e", lazy.spawn(file_manager)),
         Key([super], "q", lazy.spawn(qt5_config)),
-        Key([print_screen], lazy.spawn(f"{screenshot} /home/ali/Pictures/")),
+        Key([], print_screen, lazy.spawn(f"{screenshot} /home/ali/Pictures/")),
     ]
 
     return keys
