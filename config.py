@@ -21,9 +21,13 @@ def autostart():
     subprocess.Popen("dunst")
     if qtile.core.name == "x11":
         subprocess.Popen(["picom", "-b"])
+        subprocess.Popen(["greenclip", "daemon"])
+        os.environ["QT_QPA_PLATFORMTHEME"] = "qt5ct"
+    elif qtile.core.name == "wayland":
+        os.environ["QT_QPA_PLATFORM"] = "wayland"
+        os.environ["QT_QPA_PLATFORMTHEME"] = "qt5ct"
     subprocess.Popen("lxqt-policykit-agent")
     subprocess.Popen("nm-applet")
-    os.environ["QT_QPA_PLATFORMTHEME"] = "qt5ct"
 
 
 # Set your default widget styles

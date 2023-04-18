@@ -11,6 +11,54 @@ alt = "mod1"
 print_screen = "Print"
 
 
+def resize(qtile, direction):
+    layout = qtile.current_layout
+    child = layout.current
+    parent = child.parent
+
+    while parent:
+        if child in parent.children:
+            layout_all = False
+
+            if (direction == "left" and parent.split_horizontal) or (
+                direction == "up" and not parent.split_horizontal
+            ):
+                parent.split_ratio = max(5, parent.split_ratio - layout.grow_amount)
+                layout_all = True
+            elif (direction == "right" and parent.split_horizontal) or (
+                direction == "down" and not parent.split_horizontal
+            ):
+                parent.split_ratio = min(95, parent.split_ratio + layout.grow_amount)
+                layout_all = True
+
+            if layout_all:
+                layout.group.layout_all()
+                break
+
+        child = parent
+        parent = child.parent
+
+
+@lazy.function
+def resize_left(qtile):
+    resize(qtile, "left")
+
+
+@lazy.function
+def resize_right(qtile):
+    resize(qtile, "right")
+
+
+@lazy.function
+def resize_up(qtile):
+    resize(qtile, "up")
+
+
+@lazy.function
+def resize_down(qtile):
+    resize(qtile, "down")
+
+
 # Define keybindings
 def init_keys():
     keys = [
@@ -43,10 +91,10 @@ def init_keys():
         # resize fcuse window
         Key([super, "control"], "g", lazy.layout.grow()),
         Key([super, "control"], "s", lazy.layout.shrink()),
-        Key([super, "control"], "j", lazy.layout.grow_down()),
-        Key([super, "control"], "k", lazy.layout.grow_up()),
-        Key([super, "control"], "h", lazy.layout.grow_left()),
-        Key([super, "control"], "l", lazy.layout.grow_right()),
+        Key([super, "control"], "j", resize_down),
+        Key([super, "control"], "k", resize_up),
+        Key([super, "control"], "h", resize_left),
+        Key([super, "control"], "l", resize_right),
         # Toggle between different layouts as defined below
         Key([super], "space", lazy.next_layout()),
         # Switch KeyBoard language
@@ -64,6 +112,9 @@ def init_keys():
 def init_apps_run():
     term = "alacritty"
     app_menu = "dmenu_run"
+    clipboard = (
+        'rofi -modi "clipboard:greenclip print" -show clipboard -run-command "{cmd}"'
+    )
     browser = "firefox"
     file_manager = "pcmanfm-qt"
     qt5_config = "qt5ct"
@@ -73,9 +124,10 @@ def init_apps_run():
         Key([super], "Return", lazy.spawn(term)),
         Key([super], "b", lazy.spawn(browser)),
         Key([super], "d", lazy.spawn(app_menu)),
+        Key([super], "v", lazy.spawn(clipboard)),
         Key([super], "e", lazy.spawn(file_manager)),
         Key([super], "q", lazy.spawn(qt5_config)),
-        Key([print_screen], lazy.spawn(f"{screenshot} /home/ali/Pictures/")),
+        Key([], print_screen, lazy.spawn(f"{screenshot} /home/ali/Pictures/")),
     ]
 
     return keys
