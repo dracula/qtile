@@ -19,13 +19,9 @@ from colors.dracula import Dracula
 @hook.subscribe.startup_once
 def autostart():
     subprocess.Popen("dunst")
-    if qtile.core.name == "x11":
-        subprocess.Popen(["picom", "-b"])
-        subprocess.Popen(["greenclip", "daemon"])
-        os.environ["QT_QPA_PLATFORMTHEME"] = "qt5ct"
-    elif qtile.core.name == "wayland":
-        os.environ["QT_QPA_PLATFORM"] = "wayland"
-        os.environ["QT_QPA_PLATFORMTHEME"] = "qt5ct"
+    subprocess.Popen(["picom", "-b"])
+    subprocess.Popen(["greenclip", "daemon"])
+    os.environ["QT_QPA_PLATFORMTHEME"] = "qt5ct"
     subprocess.Popen("lxqt-policykit-agent")
     subprocess.Popen("nm-applet")
 
@@ -41,7 +37,7 @@ widgets_themes = dict(
 widgets_themes.update(colors)
 
 layoutConfig = dict(
-    margin=[10, 5, 5, 10],
+    margin=[5, 2, 2, 5],
     border_width=2,
     border_focus=colors["pink"],
     border_normal=colors["cyan"],
@@ -90,3 +86,5 @@ bring_front_click = False
 cursor_warp = False
 auto_fullscreen = True
 wmname = "qtile"
+
+

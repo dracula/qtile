@@ -1,3 +1,4 @@
+import os
 # built in libs
 from libqtile.config import Click, Drag, Key
 from libqtile.lazy import lazy
@@ -9,6 +10,8 @@ from .groups import init_groups
 super = "mod4"
 alt = "mod1"
 print_screen = "Print"
+home = os.path.expanduser('~')
+
 
 
 def resize(qtile, direction):
@@ -23,12 +26,14 @@ def resize(qtile, direction):
             if (direction == "left" and parent.split_horizontal) or (
                 direction == "up" and not parent.split_horizontal
             ):
-                parent.split_ratio = max(5, parent.split_ratio - layout.grow_amount)
+                parent.split_ratio = max(
+                    5, parent.split_ratio - layout.grow_amount)
                 layout_all = True
             elif (direction == "right" and parent.split_horizontal) or (
                 direction == "down" and not parent.split_horizontal
             ):
-                parent.split_ratio = min(95, parent.split_ratio + layout.grow_amount)
+                parent.split_ratio = min(
+                    95, parent.split_ratio + layout.grow_amount)
                 layout_all = True
 
             if layout_all:
@@ -78,10 +83,10 @@ def init_keys():
         Key([super, alt], "h", lazy.layout.flip_left()),
         Key([super, alt], "l", lazy.layout.flip_right()),
         # Switch window focus to other pane(s) of stack
-        Key([super], "Tab", lazy.layout.next()),
-        Key([super, "Shift"], "Tab", lazy.layout.previous()),
+        Key([alt], "Tab", lazy.layout.next()),
+        Key([alt, "Shift"], "Tab", lazy.layout.previous()),
         # Swap panes of split stack
-        Key([super, "Shift"], "space", lazy.layout.rotate()),
+        Key([super, "Shift"], "Space", lazy.layout.rotate()),
         # Switch Window Mode to Normalize
         Key([super, "Shift"], "n", lazy.layout.normalize()),
         # Switch window Mode to FullScreen
@@ -96,9 +101,9 @@ def init_keys():
         Key([super, "control"], "h", resize_left),
         Key([super, "control"], "l", resize_right),
         # Toggle between different layouts as defined below
-        Key([super], "space", lazy.next_layout()),
+        Key([super], "Tab", lazy.next_layout()),
         # Switch KeyBoard language
-        Key([alt], "Shift_L", lazy.widget["keyboardlayout"].next_keyboard()),
+        Key([super], "Space", lazy.widget["keyboardlayout"].next_keyboard()),
         # Kill focused window
         Key([super], "w", lazy.window.kill()),
         # Restart Qtile
@@ -118,7 +123,7 @@ def init_apps_run():
     browser = "firefox"
     file_manager = "pcmanfm-qt"
     qt5_config = "qt5ct"
-    screenshot = "lximage-qt -s"
+    screenshot = f"{home}/.config/qtile/scripts/screenshot"
 
     keys = [
         Key([super], "Return", lazy.spawn(term)),
@@ -127,7 +132,10 @@ def init_apps_run():
         Key([super], "v", lazy.spawn(clipboard)),
         Key([super], "e", lazy.spawn(file_manager)),
         Key([super], "q", lazy.spawn(qt5_config)),
-        Key([], print_screen, lazy.spawn(f"{screenshot} /home/ali/Pictures/")),
+        Key([], print_screen, lazy.spawn(
+            f"{screenshot} -xc {home}/Pictures/")),
+        Key([super], print_screen, lazy.spawn(
+            f'{screenshot} -xsc {home}/Pictures/'))
     ]
 
     return keys
