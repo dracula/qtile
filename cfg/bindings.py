@@ -133,9 +133,9 @@ def init_apps_run():
         Key([super], "e", lazy.spawn(file_manager)),
         Key([super], "q", lazy.spawn(qt5_config)),
         Key([], print_screen, lazy.spawn(
-            f"{screenshot} -xc {home}/Pictures/")),
+            f"{screenshot} -xcp {home}/Pictures/")),
         Key([super], print_screen, lazy.spawn(
-            f'{screenshot} -xsc {home}/Pictures/'))
+            f'{screenshot} -xscp {home}/Pictures/'))
     ]
 
     return keys
