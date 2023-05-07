@@ -1,7 +1,8 @@
 from libqtile.config import Group
-from .groups.names import init_groups
+
+from groups.names import init_names
+
 
 # Making objects from each group member
-def Groups_name_creator():
-    return [Group(name, **kwargs) for name, kwargs in init_groups()]
-
+def init_name_creator():
+    return [Group(name, **kwargs) for name, kwargs in init_names()]

@@ -12,7 +12,8 @@ from bindings.cores import init_keys
 from bindings.groups import init_groups_keys
 from bindings.mouse import init_mouse_keys
 # import groups configs
-from groups.creator import Groups_name_creator
+from groups.creator import init_name_creator
+from groups.rules import init_app_rules
 # import layouts config
 from layouts.settings import init_layouts
 # import themes and colors
@@ -55,10 +56,10 @@ mouse = init_mouse_keys()
 apps = init_apps_run()
 keys.extend(apps)
 layouts = init_layouts(layoutConfig)
-groups = Groups_name_creator()
+groups = init_name_creator()
 groups_bind = init_groups_keys()
 keys.extend(groups_bind)
-
+group_mappings = init_app_rules()
 
 # Define the bar
 def init_bar():
