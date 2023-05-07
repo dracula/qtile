@@ -3,12 +3,12 @@ from libqtile.config import Key
 from libqtile.lazy import lazy
 
 # Modules and Others Config files
-from groups.names import init_groups
+from groups.names import init_names
 
 
 def init_groups_keys():
     keys = []
-    for i, (name, kwargs) in enumerate(init_groups(), 1):
+    for i, (name, kwargs) in enumerate(init_names(), 1):
         keys.append(
             Key([super], str(i), lazy.group[name].toscreen())
         )  # Switch to another group

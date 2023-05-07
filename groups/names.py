@@ -1,5 +1,4 @@
-# Define groups names
-def init_groups():
+def init_names():
     group_names = [
         ("Web", {"layout": "Bsp"}),
         ("Code", {"layout": "Bsp"}),

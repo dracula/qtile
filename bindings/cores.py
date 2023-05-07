@@ -1,10 +1,11 @@
 # built in libs
 from libqtile.config import Key
-from linqtile.lazy import lazy
+from libqtile.lazy import lazy
 
 # Modules and Others Config files
 from layouts.bsp import resize_down, resize_left, resize_right, resize_up
-from .vars import super, alt
+
+from bindings.vars import alt, super
 
 
 # Define keybindings
@@ -47,6 +48,8 @@ def init_keys():
         Key([super], "Tab", lazy.next_layout()),
         # Switch KeyBoard language
         Key([super], "Space", lazy.widget["keyboardlayout"].next_keyboard()),
+        # Volume Controle
+        Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%-")),
         # Kill focused window
         Key([super, "Shift"], "w", lazy.window.kill()),
         # Restart Qtile
@@ -55,6 +58,3 @@ def init_keys():
         Key([super, "control"], "q", lazy.shutdown()),
     ]
     return keys
-
-
-
