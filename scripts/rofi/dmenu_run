@@ -1,4 +1,4 @@
 #!/bin/bash
 
-rofi -show run -theme ~/.config/qtile/themes/rofi/darcula_demnu_style.rasi
+rofi -show run -theme ~/.config/qtile/themes/rofi/dracula_demnu_style.rasi
 
