@@ -55,14 +55,14 @@ def init_widgets(config: dict):
             font=config["font"],
             emoji=True,
         ),
-        # widget.Notify(
-        #     fontsize=16,
-        #     background=config["background"],
-        #     foreground=config["foreground"],
-        #     default_timeout=5,
-        #     markup=True,
-        #     margin=5,
-        # ),
+        widget.Notify(
+            fontsize=16,
+            background=config["background"],
+            foreground=config["foreground"],
+            default_timeout=5,
+            markup=True,
+            margin=5,
+        ),
         widget.Clock(
             format=" %I:%M%p",
             update_interval=1,
