@@ -2,6 +2,7 @@
 from libqtile.config import Click, Drag
 from libqtile.lazy import lazy
 
+from .vars import super
 
 def init_mouse_keys():
     mouse = [

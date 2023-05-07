@@ -5,7 +5,7 @@ from libqtile.lazy import lazy
 # Modules and Others Config files
 from layouts.bsp import resize_down, resize_left, resize_right, resize_up
 
-from bindings.vars import alt, super
+from .vars import alt, super
 
 
 # Define keybindings

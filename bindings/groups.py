@@ -4,7 +4,7 @@ from libqtile.lazy import lazy
 
 # Modules and Others Config files
 from groups.names import init_names
-
+from .vars import super
 
 def init_groups_keys():
     keys = []

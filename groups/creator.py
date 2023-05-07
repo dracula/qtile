@@ -1,6 +1,6 @@
 from libqtile.config import Group
 
-from groups.names import init_names
+from .names import init_names
 
 
 # Making objects from each group member
