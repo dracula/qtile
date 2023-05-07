@@ -3,16 +3,22 @@ import os
 import subprocess
 
 #  qtile built-in libraries
-from libqtile import bar, hook, qtile
+from libqtile import bar, hook
 from libqtile.config import Screen
 
-# Config files and other libraries
-from cfg.bindings import (init_apps_run, init_groups_keys, init_keys,
-                          init_mouse_keys)
-from cfg.groups import Groups_name_creator, init_group_mappings
-from cfg.layouts import init_layouts
-from cfg.widgets import init_widgets
-from colors.dracula import Dracula
+# import bindings Modules
+from bindings.apps import init_apps_run
+from bindings.cores import init_keys
+from bindings.groups import init_groups_keys
+from bindings.mouse import init_mouse_keys
+# import groups configs
+from groups.creator import Groups_name_creator
+# import layouts config
+from layouts.settings import init_layouts
+# import themes and colors
+from themes.dracula import Dracula
+# import widgets configs
+from widgets.top import init_widgets
 
 
 # Set up the hooks
@@ -52,7 +58,6 @@ layouts = init_layouts(layoutConfig)
 groups = Groups_name_creator()
 groups_bind = init_groups_keys()
 keys.extend(groups_bind)
-group_mappings = init_group_mappings()
 
 
 # Define the bar
@@ -76,7 +81,12 @@ screens = [
         top=init_bar(),
         wallpaper="~/.config/qtile/wallpapers/dracula_qtile.png",
         wallpaper_mode="stretch",
-    )
+    ),
+    Screen(
+        bottom=init_bar(),
+        wallpaper="~/.config/qtile/wallpapers/dracula_qtile.png",
+        wallpaper_mode="stretch",
+    ),
 ]
 
 focus_on_window_activation = "smart"
@@ -86,5 +96,3 @@ bring_front_click = False
 cursor_warp = False
 auto_fullscreen = True
 wmname = "qtile"
-
-
