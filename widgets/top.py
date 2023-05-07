@@ -31,15 +31,6 @@ def init_widgets(config: dict):
             foreground=config["foreground"],
             background=config["background"],
         ),
-        widget.Prompt(
-            font=config["font"],
-            fontsize=config["fontsize"],
-            foreground=config["foreground"],
-            background=config["background"],
-            padding=5,
-            prompt="Run: ",
-            cursor_color=config["comment"],
-        ),
         widget.Sep(padding=20),
         widget.WindowName(
             foreground=config["foreground"],
