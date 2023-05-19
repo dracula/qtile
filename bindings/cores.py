@@ -49,7 +49,7 @@ def init_keys():
         # Switch KeyBoard language
         Key([super], "Space", lazy.widget["keyboardlayout"].next_keyboard()),
         # Volume Controle
-        Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%-")),
+        Key([], "XF86AudioLowerVolume", lazy.widget["Pulsevolume"].volume_down_command()),
         # Kill focused window
         Key([super, "Shift"], "w", lazy.window.kill()),
         # Restart Qtile
