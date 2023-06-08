@@ -5,7 +5,7 @@ from libqtile.lazy import lazy
 # Modules and Others Config files
 from layouts.bsp import resize_down, resize_left, resize_right, resize_up
 
-from .vars import alt, super
+from .vars import alt, super, volume_controller
 
 
 # Define keybindings
@@ -49,7 +49,9 @@ def init_keys():
         # Switch KeyBoard language
         Key([super], "Space", lazy.widget["keyboardlayout"].next_keyboard()),
         # Volume Controle
-        Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%-")),
+        Key([], "XF86AudioLowerVolume", lazy.spawn(f"{volume_controller} -d 5")),
+        Key([], "XF86AudioRaiseVolume", lazy.spawn(f"{volume_controller} -u 5")),
+        Key([], "XF86AudioMute", lazy.spawn(f"{volume_controller} -t")),
         # Kill focused window
         Key([super, "Shift"], "w", lazy.window.kill()),
         # Restart Qtile
