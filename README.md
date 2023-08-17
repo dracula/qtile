@@ -32,4 +32,4 @@ This provides flexibility to tailor the config to your needs by installing requi
 
 Contributions from the community are welcome to help improve this project!
 
-You can find the list of contributors on the [contributors page](/chttps://github.com/Pakrohk/qtile/contributors).
+You can find the list of contributors on the [contributors page](https://github.com/nooob-developer/qtile-dracula/graphs/contributors).
