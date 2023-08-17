@@ -31,5 +31,29 @@ This provides flexibility to tailor the config to your needs by installing requi
 #### Contributions
 
 Contributions from the community are welcome to help improve this project!
-
 You can find the list of contributors on the [contributors page](https://github.com/nooob-developer/qtile-dracula/graphs/contributors).
+
+| ![pakrohk](https://github.com/Pakrohk.png?size=101)                 | ![nooob-developer](https://github.com/nooob-developer.png?size=100) |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| ![Pakrohk](https://github.com/Pakrohk)                              | ![nooob-developer](https://github.com/nooob-developer)              |
+
+## License
+[MIT License](https://github.com/qtile/qtile/blob/master/LICENSE)
+
+## Contribution Guidelines
+To join as a contributor:
+- Fork the repository
+- Make changes and enhancements
+- Submit a pull request
+
+We actively welcome contributions that align with the project roadmap and philosophy. Core areas for contributions include:
+
+- Fixing bugs
+- Adding new features
+- Improving documentation
+- Translating content
+- Creating tutorials and guides
+
+By becoming a contributor, you can help influence the future of this project and make an impact. Your contributions will be appreciated and credited.
+
+If you have any questions about contributing, please contact the maintainers. We'd love to have you on board!
