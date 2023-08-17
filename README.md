@@ -33,9 +33,9 @@ This provides flexibility to tailor the config to your needs by installing requi
 Contributions from the community are welcome to help improve this project!
 You can find the list of contributors on the [contributors page](https://github.com/nooob-developer/qtile-dracula/graphs/contributors).
 
-| [pakrohk](https://github.com/Pakrohk.png?size=101)                 | ![nooob-developer](https://github.com/nooob-developer.png?size=100) |
+| ![pakrohk](https://github.com/Pakrohk.png?size=101)                 | ![nooob-developer](https://github.com/nooob-developer.png?size=100) |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| [Pakrohk](https://github.com/Pakrohk)                              | ![nooob-developer](https://github.com/nooob-developer)              |
+| [Pakrohk](https://github.com/Pakrohk)                              | [nooob-developer](https://github.com/nooob-developer)              |
 
 ## License
 [MIT License](https://github.com/qtile/qtile/blob/master/LICENSE)
