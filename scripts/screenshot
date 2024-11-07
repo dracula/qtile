@@ -1,0 +1,58 @@
+#!/bin/sh
+
+# Set default values
+TIMER=0
+SELECT=0
+QUALITY=5
+COPY_SS=0
+SAVE_SS=0
+NAME_SS="$(date '+%Y%m%d-%H%M%S').png"
+SAVE_SS_DIR="$HOME/pics"
+
+while getopts :scxt:q:n:p: flag; do
+    case "${flag}" in
+        t) TIMER=${OPTARG};;
+        s) SELECT=1;;
+        c) COPY_SS=1;;
+        x) SAVE_SS=1;;
+        q) QUALITY=${OPTARG};;
+        n) NAME_SS=${OPTARG};;
+        p) SAVE_SS_DIR=${OPTARG};;
+        *) echo "usage: $0 [-xsc] [-t time(s)] [-q quality(1-10)] [-n name.png] [-p path/to/picture]"; exit 2 ;;
+    esac
+done
+
+# If -x or -c options are not given, set -c
+[ $SAVE_SS -eq 0 ] && [ $COPY_SS -eq 0 ] && COPY_SS=1
+
+# If -x option is given and the path does not exist, create it
+[ $SAVE_SS -eq 1 ] && [ ! -d "${SAVE_SS_DIR}" ] && mkdir -p "${SAVE_SS_DIR}"
+
+# If -s option is given, add the -s option to $TAGS
+[ $SELECT -eq 1 ] && TAGS="-s"
+
+# Wait for the timer, if specified
+sleep "$TIMER"
+
+# Capture the screenshot
+maim $TAGS -m "$QUALITY" "${SAVE_SS_DIR}/${NAME_SS}" || exit 2
+
+# Copy the screenshot to clipboard, if requested
+if [ $SAVE_SS -eq 1 ] && [ $COPY_SS -eq 1 ]; then
+    xclip -selection clipboard -target image/png -i "${SAVE_SS_DIR}/${NAME_SS}"
+    SHOW="$(echo "${SAVE_SS_DIR}" | sed -e "s|${HOME}|~|g")/${NAME_SS} (+CLIPBOARD)"
+# Remove the screenshot file, if it's not saved and only copied to clipboard
+elif [ $SAVE_SS -eq 0 ] && [ $COPY_SS -eq 1 ]; then
+    rm "${SAVE_SS_DIR}/${NAME_SS}"
+    SHOW="CLIPBOARD"
+# Show the saved screenshot, if it's saved and not copied to clipboard
+elif [ $SAVE_SS -eq 1 ] && [ $COPY_SS -eq 0 ]; then
+    SHOW="$(echo "${SAVE_SS_DIR}" | sed -e "s|${HOME}|~|g")/${NAME_SS}"
+fi
+
+# Send notification
+if [ $? -eq 0 ]; then
+    notify-send --urgency=normal --hint=string:desktop-entry:"📷" "Screenshot taken" "Screenshot saved at $SHOW"
+else
+    notify-send --urgency=normal --hint=string:desktop-entry:"🚫" "Screenshot error" "Failed to capture screenshot"
+fi
